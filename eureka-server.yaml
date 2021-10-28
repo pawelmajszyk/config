@@ -9,4 +9,4 @@ eureka:
     enable-self-preservation: false
 spring:
   application:
-    name: eureka
+    name: eureka-server
