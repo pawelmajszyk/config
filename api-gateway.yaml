@@ -1,6 +1,6 @@
 gateway.msg: dupa
 
-gateway.spring:
+spring:
    application:
     name: api-gateway
    cloud:
@@ -24,8 +24,7 @@ gateway.spring:
       httpclient:
         connect-timeout: 1000
         response-timeout: 5s
-
-gateway.eureka:
+eureka:
   instance:
     lease-expiration-duration-in-seconds: 2
     lease-renewal-interval-in-seconds: 1
@@ -35,7 +34,7 @@ gateway.eureka:
     healthcheck:
       enabled: true
 
-gateway.management:
+management:
   endpoint:
     gateway:
       enabled: true
