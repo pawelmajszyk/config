@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: dev
+
+  messages:
+    basename: messages/messages
+
+  hateoas:
+    use-hal-as-default-json-media-type: false
+
+  jpa:
+    open-in-view: false
+
+server:
+  servlet:
+    context-path: /
+
+jwt:
+  expirationTime: 10 #in minutes
+  secret: QIcfX7IXYzDDtP9n7OKlDYZQ/JgAqGWtheyTyY3hJWhNtZWD+tTnOZTMugWGrlseIqqlMdATIM7g+dvKXgbDgiZ1qBW5KftmB+3IUvbk7lAf985sFzKQyfFYLGv6+nOfVwGdjrhRUmTlwcDbgCeKP80z5EcPOOfJmEesuyCkvz6FB43O7AKmc/3KkHXuNSNkefAlsTU4XIITt7la3qQOIQLzU9woQ4yvRCaXqA==
+
+register:
+  code:
+    length: 6
+
+encryption:
+  secret: oLKo6VAi6RZkdxxh #128 bit key (UTF-8)
+
+joinfaces:
+  jsf:
+    PROJECT_STAGE: Development
+  primefaces:
+    theme: cupertino
