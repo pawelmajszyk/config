@@ -1,0 +1,62 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  application:
+    name: backend-legacy
+  datasource:
+#    url: jdbc:postgresql://localhost:5432/shoppinglist
+    # Second url for docker compose with backend monolit image
+    url: jdbc:postgresql://${DB_HOST}:5432/shoppinglist
+    username: postgres
+    password: password
+
+  flyway:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://${DB_HOST}:5432/shoppinglist
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000 # in milliseconds
+      use-key-prefix: true
+      cache-null-values: false
+
+  redis:
+#    host: 127.0.0.1
+    #Second host for docker compose with backend monolit image
+    host: redis
+    port: 6379
+    timeout: 60000 # establishes the connection timeout in milliseconds
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://${EUREKA_HOST}:8761/eureka}
+    healthcheck:
+      enabled: true
+
+management:
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, info
