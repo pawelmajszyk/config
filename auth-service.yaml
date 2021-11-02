@@ -8,6 +8,8 @@ eureka:
     healthcheck:
       enabled: true
 spring:
+ application:
+    name: auth-service
   jpa:
     hibernate:
       ddl-auto: validate
