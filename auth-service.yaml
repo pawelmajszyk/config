@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://${EUREKA_HOST}:8761/eureka}
+    healthcheck:
+      enabled: true
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  application:
+    name: auth-service
+  datasource:
+#    url: jdbc:postgresql://localhost:5432/shoppinglist
+    # Second url for docker compose with backend monolit image
+    url: jdbc:postgresql://${DB_HOST}:5432/auth
+    username: postgres
+    password: admin
