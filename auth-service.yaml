@@ -14,9 +14,11 @@ spring:
     hibernate:
       ddl-auto: validate
   datasource:
-   url: jdbc:postgresql://${DB_HOST}:5432/shoppinglist
-   username: postgres
-   password: password
+#    url: jdbc:postgresql://localhost:5432/shoppinglist
+    # Second url for docker compose with backend monolit image
+    url: jdbc:postgresql://${DB_HOST}:5432/shoppinglist
+    username: postgres
+    password: password
 management:
   endpoint:
     health:
@@ -27,3 +29,19 @@ management:
     web:
       exposure:
         include: health, info
+security:
+  oauth2:
+    client:
+      client-id: first-client
+      client-secret: noonewilleverguess
+encryption:
+  secret: oLKo6VAi6RZkdxxh #128 bit key (UTF-8)
+
+register:
+  code:
+    length: 6
+jwt:
+  expirationTime: 10 #in minutes
+  secret: QIcfX7IXYzDDtP9n7OKlDYZQ/JgAqGWtheyTyY3hJWhNtZWD+tTnOZTMugWGrlseIqqlMdATIM7g+dvKXgbDgiZ1qBW5KftmB+3IUvbk7lAf985sFzKQyfFYLGv6+nOfVwGdjrhRUmTlwcDbgCeKP80z5EcPOOfJmEesuyCkvz6FB43O7AKmc/3KkHXuNSNkefAlsTU4XIITt7la3qQOIQLzU9woQ4yvRCaXqA==
+
+
